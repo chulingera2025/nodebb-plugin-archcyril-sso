@@ -1,5 +1,7 @@
 'use strict';
 
+const nconf = require.main.require('nconf');
+
 const google = require('./lib/providers/google');
 const github = require('./lib/providers/github');
 
@@ -8,6 +10,17 @@ const providers = [google, github];
 const Plugin = {};
 
 Plugin.init = async function (data) {
+	const hostHelpers = require.main.require('./src/routes/helpers');
+	const { router } = data;
+
+	hostHelpers.setupAdminPageRoute(router, '/admin/plugins/archcyril-sso', (req, res) => {
+		res.render('admin/plugins/archcyril-sso', {
+			title: 'ArchCyril SSO',
+			baseUrl: nconf.get('url'),
+			activeTab: req.query.tab || 'google',
+		});
+	});
+
 	await Promise.all(providers.map((p) => p.init(data)));
 };
 
@@ -72,7 +85,7 @@ Plugin.filterConfigGet = function (data) {
 
 Plugin.addAdminMenuItem = function (header) {
 	header.authentication.push({
-		route: '/plugins/sso-google',
+		route: '/plugins/archcyril-sso',
 		icon: 'fa-shield-halved',
 		name: 'SSO',
 	});
