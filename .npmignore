@@ -1,0 +1,5 @@
+.git
+.gitignore
+.eslintrc*
+eslint.config.*
+node_modules
