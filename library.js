@@ -71,9 +71,11 @@ Plugin.filterConfigGet = function (data) {
 };
 
 Plugin.addAdminMenuItem = function (header) {
-	for (const provider of providers) {
-		header = provider.addMenuItem(header);
-	}
+	header.authentication.push({
+		route: '/plugins/sso-google',
+		icon: 'fa-shield-halved',
+		name: 'SSO',
+	});
 	return header;
 };
 

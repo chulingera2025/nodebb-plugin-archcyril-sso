@@ -3,128 +3,105 @@
 
 	<div class="row m-0">
 		<div id="spy-container" class="col-12 px-0 mb-4" tabindex="0">
-			<ul class="nav nav-tabs mb-3" role="tablist">
-				<li class="nav-item" role="presentation">
-					<button class="nav-link {{{if activeTab == "google"}}}active{{{end}}}" data-bs-toggle="tab" data-bs-target="#google-tab" type="button" role="tab">Google</button>
+			<ul class="nav nav-tabs mb-3">
+				<li class="nav-item">
+					<button class="nav-link {{{if activeTab == "google"}}}active{{{end}}}" data-bs-toggle="tab" data-bs-target="#google-tab">Google</button>
 				</li>
-				<li class="nav-item" role="presentation">
-					<button class="nav-link {{{if activeTab == "github"}}}active{{{end}}}" data-bs-toggle="tab" data-bs-target="#github-tab" type="button" role="tab">GitHub</button>
+				<li class="nav-item">
+					<button class="nav-link {{{if activeTab == "github"}}}active{{{end}}}" data-bs-toggle="tab" data-bs-target="#github-tab">GitHub</button>
 				</li>
 			</ul>
 
 			<div class="tab-content">
-				<!-- Google Tab -->
-				<div class="tab-pane fade {{{if activeTab == "google"}}}show active{{{end}}}" id="google-tab" role="tabpanel">
+				<!-- Google -->
+				<div class="tab-pane fade {{{if activeTab == "google"}}}show active{{{end}}}" id="google-tab">
 					<div class="alert alert-info">
-						<strong>Quick Start</strong>
+						<strong>快速开始</strong>
 						<ol>
 							<li>
-								Create a <strong>New Project</strong> via the
-								<a href="https://console.cloud.google.com/apis/">Google Cloud Console <i class="fa fa-external-link"></i></a>
+								前往 <a href="https://console.cloud.google.com/apis/">Google Cloud 控制台 <i class="fa fa-external-link"></i></a> 创建<strong>新项目</strong>
 							</li>
 							<li>
-								From the "Credentials" page, create a new "OAuth 2.0 Client ID".
+								在 API 凭据管理中，创建一个<strong>OAuth 2.0 客户端 ID</strong>
 								<ul>
-									<li>The "Application Type" is "Web application"</li>
-									<li>"Name" can be anything. Perhaps "NodeBB SSO" will suffice.</li>
-									<li>"Authorized Javascript origins" can be left empty</li>
-									<li>
-										The "Authorised Redirect URI" is your NodeBB's URL with <code>/auth/google/callback</code> appended to it.
-										<ul>
-											<li>Our best guess for this site is <code>{baseUrl}/auth/google/callback</code></li>
-											<li>When you enter this value into the text field, be sure to hit <code>Enter</code> to submit the URL before saving</li>
-										</ul>
-									</li>
+									<li>应用类型选择 <strong>Web 应用</strong></li>
+									<li>名称随意，例如 "NodeBB SSO"</li>
+									<li>已获授权的 JavaScript 来源留空</li>
+									<li>已获授权的重定向 URI 填写: <code>{baseUrl}/auth/google/callback</code>（输入后按回车确认）</li>
 								</ul>
 							</li>
-							<li>You will be shown a screen containing your <strong>Client ID</strong> and <strong>Client Secret</strong>.</li>
-							<li>You can set these values in two ways:
+							<li>创建完成后获取 <strong>客户端 ID</strong> 和 <strong>客户端密钥</strong></li>
+							<li>可通过两种方式配置:
 								<ul>
-									<li>Use environment variables
-										<ul>
-											<li><code>export SSO_GOOGLE_CLIENT_ID='Client ID'</code></li>
-											<li><code>export SSO_GOOGLE_CLIENT_SECRET='Client Secret'</code></li>
-										</ul>
-									</li>
-									<li>Use the form below (this overrides environment variables)</li>
+									<li>环境变量: <code>SSO_GOOGLE_CLIENT_ID</code>、<code>SSO_GOOGLE_CLIENT_SECRET</code></li>
+									<li>下方表单（会覆盖环境变量的值）</li>
 								</ul>
 							</li>
-							<li>Save and restart NodeBB via the ACP Dashboard</li>
+							<li>保存后在 ACP 面板重启 NodeBB</li>
 						</ol>
 					</div>
-					<form role="form" class="sso-google-settings">
+
+					<form class="sso-google-settings">
 						<div class="mb-3">
-							<label for="google-id">Client ID</label>
-							<input type="text" name="id" id="google-id" title="Client ID" class="form-control input-lg" placeholder="Client ID">
+							<label class="form-label" for="google-id">客户端 ID</label>
+							<input type="text" name="id" id="google-id" class="form-control" placeholder="客户端 ID">
 						</div>
 						<div class="mb-3">
-							<label for="google-secret">Client Secret</label>
-							<input type="text" name="secret" id="google-secret" title="Client Secret" class="form-control" placeholder="Client Secret">
+							<label class="form-label" for="google-secret">客户端密钥</label>
+							<input type="text" name="secret" id="google-secret" class="form-control" placeholder="客户端密钥">
 						</div>
 						<div class="mb-3">
-							<label for="google-style">Login Button Style</label>
-							<select class="form-select" name="style" id="google-style" title="Login Button Style">
-								<option value="light">Light</option>
-								<option value="dark">Dark</option>
+							<label class="form-label" for="google-style">登录按钮样式</label>
+							<select class="form-select" name="style" id="google-style">
+								<option value="light">浅色</option>
+								<option value="dark">深色</option>
 							</select>
 						</div>
 						<div class="form-check mb-2">
 							<input type="checkbox" class="form-check-input" id="google-autoconfirm" name="autoconfirm">
-							<label for="google-autoconfirm" class="form-check-label">
-								Skip email verification for people who register using SSO?
-							</label>
+							<label class="form-check-label" for="google-autoconfirm">跳过 SSO 注册用户的邮箱验证</label>
 						</div>
 						<div class="form-check mb-3">
 							<input type="checkbox" class="form-check-input" id="google-disableRegistration" name="disableRegistration">
-							<label for="google-disableRegistration" class="form-check-label">
-								Disable user registration via SSO
-							</label>
+							<label class="form-check-label" for="google-disableRegistration">禁止通过 SSO 注册新用户</label>
 						</div>
 					</form>
 				</div>
 
-				<!-- GitHub Tab -->
-				<div class="tab-pane fade {{{if activeTab == "github"}}}show active{{{end}}}" id="github-tab" role="tabpanel">
+				<!-- GitHub -->
+				<div class="tab-pane fade {{{if activeTab == "github"}}}show active{{{end}}}" id="github-tab">
 					<div class="alert alert-info">
-						Register a new <strong>GitHub OAuth App</strong> via
-						<a href="https://github.com/settings/developers">Developer Applications <i class="fa fa-external-link"></i></a> and then paste your application details here.
+						前往 <a href="https://github.com/settings/developers">GitHub 开发者设置 <i class="fa fa-external-link"></i></a> 创建新的 <strong>OAuth App</strong>，将凭据填入下方表单。
 					</div>
+
 					<form class="sso-github-settings">
 						<div class="mb-3">
-							<label for="github-id">Client ID</label>
-							<input type="text" name="id" id="github-id" title="Client ID" class="form-control" placeholder="Client ID">
+							<label class="form-label" for="github-id">客户端 ID</label>
+							<input type="text" name="id" id="github-id" class="form-control" placeholder="客户端 ID">
 						</div>
 						<div class="mb-3">
-							<label for="github-secret">Client Secret</label>
-							<input type="text" name="secret" id="github-secret" title="Client Secret" class="form-control" placeholder="Client Secret">
+							<label class="form-label" for="github-secret">客户端密钥</label>
+							<input type="text" name="secret" id="github-secret" class="form-control" placeholder="客户端密钥">
 						</div>
-						<div class="mb-3 alert alert-warning">
-							<label for="github-callback">Your NodeBB's "Authorization callback URL"</label>
-							<input type="text" id="github-callback" title="Authorization callback URL" class="form-control" value="{baseUrl}/auth/github/callback" readonly>
-							<p class="form-text">
-								Ensure that this value is set in your GitHub application's settings
-							</p>
+						<div class="mb-3">
+							<label class="form-label" for="github-callback">Authorization callback URL</label>
+							<input type="text" id="github-callback" class="form-control text-muted" value="{baseUrl}/auth/github/callback" readonly>
+							<div class="form-text">确保 GitHub OAuth App 设置中已填写此地址</div>
 						</div>
 						<div class="form-check mb-2">
 							<input type="checkbox" class="form-check-input" id="github-disableRegistration" name="disableRegistration">
-							<label for="github-disableRegistration" class="form-check-label">
-								Disable user registration via SSO
-							</label>
+							<label class="form-check-label" for="github-disableRegistration">禁止通过 SSO 注册新用户</label>
 						</div>
 						<div class="form-check mb-3">
 							<input type="checkbox" class="form-check-input" id="github-needToVerifyEmail" name="needToVerifyEmail">
-							<label for="github-needToVerifyEmail" class="form-check-label">
-								Require email verification for SSO users
-							</label>
+							<label class="form-check-label" for="github-needToVerifyEmail">要求 SSO 用户验证邮箱</label>
 						</div>
 					</form>
 				</div>
 			</div>
 
-			<p class="form-text">
-				Restricting registration means that only registered users can associate their account with this SSO strategy.
-				This restriction is useful if you have users bypassing registration controls by using social media accounts, or
-				if you wish to use the NodeBB registration queue.
+			<p class="form-text mt-2">
+				限制注册后，仅已注册用户可以将 SSO 账号与本站关联。适用于防止用户绕过注册管控、或配合 NodeBB 注册审核队列使用。
 			</p>
 		</div>
 	</div>
