@@ -1,0 +1,24 @@
+{
+  "id": "nodebb-plugin-archcyril-sso",
+  "name": "ArchCyril SSO",
+  "description": "NodeBB Plugin that allows users to login/register via their Google and GitHub accounts.",
+  "url": "https://github.com/chulingera2025/nodebb-plugin-archcyril-sso",
+  "library": "./library.js",
+  "templates": "templates",
+  "hooks": [
+    { "hook": "static:app.load", "method": "init" },
+    { "hook": "filter:config.get", "method": "filterConfigGet" },
+    { "hook": "filter:auth.list", "method": "filterAuthList" },
+    { "hook": "filter:auth.init", "method": "filterAuthInit" },
+    { "hook": "filter:admin.header.build", "method": "addAdminMenuItem" },
+    { "hook": "static:user.delete", "method": "deleteUserData" },
+    { "hook": "filter:user.whitelistFields", "method": "filterUserWhitelistFields" },
+    { "hook": "filter:user.addToApprovalQueue", "method": "addToApprovalQueue" },
+    { "hook": "filter:user.create", "method": "filterUserCreate" },
+    { "hook": "action:user.create", "method": "actionUserCreate" },
+    { "hook": "filter:user.getRegistrationQueue", "method": "filterUserGetRegistrationQueue" }
+  ],
+  "modules": {
+    "../admin/plugins/archcyril-sso.js": "static/lib/admin.js"
+  }
+}
