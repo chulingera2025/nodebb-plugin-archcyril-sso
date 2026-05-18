@@ -3,6 +3,23 @@
 
 	<div class="row m-0">
 		<div id="spy-container" class="col-12 px-0 mb-4" tabindex="0">
+			<!-- Global SSO Settings -->
+			<div class="card mb-3">
+				<div class="card-header">全局 SSO 设置</div>
+				<div class="card-body">
+					<form class="sso-archcyril-settings">
+						<div class="form-check mb-2">
+							<input type="checkbox" class="form-check-input" id="sso-autoconfirm" name="autoconfirm">
+							<label class="form-check-label" for="sso-autoconfirm">跳过 SSO 注册用户的邮箱验证</label>
+						</div>
+						<div class="form-check mb-0">
+							<input type="checkbox" class="form-check-input" id="sso-disableRegistration" name="disableRegistration">
+							<label class="form-check-label" for="sso-disableRegistration">禁止通过 SSO 注册新用户</label>
+						</div>
+					</form>
+				</div>
+			</div>
+
 			<ul class="nav nav-tabs mb-3">
 				<li class="nav-item">
 					<button class="nav-link {{{if activeTab == "google"}}}active{{{end}}}" data-bs-toggle="tab" data-bs-target="#google-tab">Google</button>
@@ -33,7 +50,7 @@
 						</div>
 						<div class="mb-3">
 							<label class="form-label" for="google-secret">客户端密钥</label>
-							<input type="text" name="secret" id="google-secret" class="form-control" placeholder="客户端密钥">
+							<input type="text" name="secret" id="google-secret" class="form-control" type="password" placeholder="客户端密钥">
 						</div>
 						<div class="mb-3">
 							<label class="form-label" for="google-callback">重定向 URI</label>
@@ -46,14 +63,6 @@
 								<option value="light">浅色</option>
 								<option value="dark">深色</option>
 							</select>
-						</div>
-						<div class="form-check mb-2">
-							<input type="checkbox" class="form-check-input" id="google-autoconfirm" name="autoconfirm">
-							<label class="form-check-label" for="google-autoconfirm">跳过 SSO 注册用户的邮箱验证</label>
-						</div>
-						<div class="form-check mb-3">
-							<input type="checkbox" class="form-check-input" id="google-disableRegistration" name="disableRegistration">
-							<label class="form-check-label" for="google-disableRegistration">禁止通过 SSO 注册新用户</label>
 						</div>
 					</form>
 				</div>
@@ -77,20 +86,12 @@
 						</div>
 						<div class="mb-3">
 							<label class="form-label" for="github-secret">客户端密钥</label>
-							<input type="text" name="secret" id="github-secret" class="form-control" placeholder="客户端密钥">
+							<input type="text" name="secret" id="github-secret" class="form-control" type="password" placeholder="客户端密钥">
 						</div>
 						<div class="mb-3">
 							<label class="form-label" for="github-callback">重定向 URL</label>
 							<input type="text" id="github-callback" class="form-control text-muted" value="{baseUrl}/auth/github/callback" readonly>
 							<div class="form-text">确保 GitHub OAuth App 中已配置此地址</div>
-						</div>
-						<div class="form-check mb-2">
-							<input type="checkbox" class="form-check-input" id="github-needToVerifyEmail" name="needToVerifyEmail">
-							<label class="form-check-label" for="github-needToVerifyEmail">要求 SSO 用户验证邮箱</label>
-						</div>
-						<div class="form-check mb-3">
-							<input type="checkbox" class="form-check-input" id="github-disableRegistration" name="disableRegistration">
-							<label class="form-check-label" for="github-disableRegistration">禁止通过 SSO 注册新用户</label>
 						</div>
 					</form>
 				</div>

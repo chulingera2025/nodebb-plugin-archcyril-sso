@@ -4,15 +4,17 @@ define('admin/plugins/archcyril-sso', ['settings', 'alerts'], function (Settings
 	var ACP = {};
 
 	ACP.init = function () {
+		Settings.load('sso-archcyril', $('.sso-archcyril-settings'));
 		Settings.load('sso-google', $('.sso-google-settings'));
 		Settings.load('sso-github', $('.sso-github-settings'));
 
 		$('#save').on('click', function () {
-			var googleSaved = false;
-			var githubSaved = false;
+			var saved = 0;
+			var total = 3;
 
 			function checkDone() {
-				if (googleSaved && githubSaved) {
+				saved += 1;
+				if (saved >= total) {
 					alerts.alert({
 						type: 'success',
 						alert_id: 'archcyril-sso-saved',
@@ -25,14 +27,9 @@ define('admin/plugins/archcyril-sso', ['settings', 'alerts'], function (Settings
 				}
 			}
 
-			Settings.save('sso-google', $('.sso-google-settings'), function () {
-				googleSaved = true;
-				checkDone();
-			});
-			Settings.save('sso-github', $('.sso-github-settings'), function () {
-				githubSaved = true;
-				checkDone();
-			});
+			Settings.save('sso-archcyril', $('.sso-archcyril-settings'), checkDone);
+			Settings.save('sso-google', $('.sso-google-settings'), checkDone);
+			Settings.save('sso-github', $('.sso-github-settings'), checkDone);
 		});
 	};
 
