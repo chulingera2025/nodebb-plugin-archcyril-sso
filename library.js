@@ -14,10 +14,13 @@ Plugin.init = async function (data) {
 	const { router } = data;
 
 	hostHelpers.setupAdminPageRoute(router, '/admin/plugins/archcyril-sso', (req, res) => {
+		const tab = req.query.tab || 'google';
 		res.render('admin/plugins/archcyril-sso', {
 			title: 'ArchCyril SSO',
 			baseUrl: nconf.get('url'),
-			activeTab: req.query.tab || 'google',
+			activeTab: tab,
+			isGoogleActive: tab === 'google',
+			isGithubActive: tab === 'github',
 		});
 	});
 

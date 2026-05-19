@@ -22,16 +22,16 @@
 
 			<ul class="nav nav-tabs mb-3">
 				<li class="nav-item">
-					<button class="nav-link {{{if activeTab == "google"}}}active{{{end}}}" data-bs-toggle="tab" data-bs-target="#google-tab">Google</button>
+					<button class="nav-link {{{if isGoogleActive}}}active{{{end}}}" data-bs-toggle="tab" data-bs-target="#google-tab">Google</button>
 				</li>
 				<li class="nav-item">
-					<button class="nav-link {{{if activeTab == "github"}}}active{{{end}}}" data-bs-toggle="tab" data-bs-target="#github-tab">GitHub</button>
+					<button class="nav-link {{{if isGithubActive}}}active{{{end}}}" data-bs-toggle="tab" data-bs-target="#github-tab">GitHub</button>
 				</li>
 			</ul>
 
 			<div class="tab-content">
 				<!-- Google -->
-				<div class="tab-pane fade {{{if activeTab == "google"}}}show active{{{end}}}" id="google-tab">
+				<div class="tab-pane fade {{{if isGoogleActive}}}show active{{{end}}}" id="google-tab">
 					<div class="alert alert-info">
 						<strong>快速开始</strong>
 						<ol>
@@ -50,7 +50,7 @@
 						</div>
 						<div class="mb-3">
 							<label class="form-label" for="google-secret">客户端密钥</label>
-							<input type="text" name="secret" id="google-secret" class="form-control" type="password" placeholder="客户端密钥">
+							<input type="password" name="secret" id="google-secret" class="form-control" placeholder="客户端密钥">
 						</div>
 						<div class="mb-3">
 							<label class="form-label" for="google-callback">重定向 URI</label>
@@ -68,7 +68,7 @@
 				</div>
 
 				<!-- GitHub -->
-				<div class="tab-pane fade {{{if activeTab == "github"}}}show active{{{end}}}" id="github-tab">
+				<div class="tab-pane fade {{{if isGithubActive}}}show active{{{end}}}" id="github-tab">
 					<div class="alert alert-info">
 						<strong>快速开始</strong>
 						<ol>
@@ -86,7 +86,7 @@
 						</div>
 						<div class="mb-3">
 							<label class="form-label" for="github-secret">客户端密钥</label>
-							<input type="text" name="secret" id="github-secret" class="form-control" type="password" placeholder="客户端密钥">
+							<input type="password" name="secret" id="github-secret" class="form-control" placeholder="客户端密钥">
 						</div>
 						<div class="mb-3">
 							<label class="form-label" for="github-callback">重定向 URL</label>
