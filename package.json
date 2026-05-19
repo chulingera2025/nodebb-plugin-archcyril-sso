@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-archcyril-sso",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "NodeBB SSO Plugin supporting Google and GitHub authentication",
   "main": "library.js",
   "repository": {
