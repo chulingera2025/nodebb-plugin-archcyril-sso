@@ -29,7 +29,8 @@
   },
   "dependencies": {
     "passport-google-oauth20": "^1.0.0",
-    "passport-github2": "^0.1.9"
+    "passport-github2": "^0.1.9",
+    "passport-linuxdo": "^0.1.4"
   },
   "devDependencies": {
     "eslint": "^10.0.0",

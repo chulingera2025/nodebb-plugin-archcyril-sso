@@ -4,8 +4,9 @@ const nconf = require.main.require('nconf');
 
 const google = require('./lib/providers/google');
 const github = require('./lib/providers/github');
+const linuxdo = require('./lib/providers/linuxdo');
 
-const providers = [google, github];
+const providers = [google, github, linuxdo];
 
 const Plugin = {};
 
@@ -21,6 +22,7 @@ Plugin.init = async function (data) {
 			activeTab: tab,
 			isGoogleActive: tab === 'google',
 			isGithubActive: tab === 'github',
+			isLinuxdoActive: tab === 'linuxdo',
 		});
 	});
 

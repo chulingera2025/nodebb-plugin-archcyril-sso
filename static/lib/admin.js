@@ -7,10 +7,11 @@ define('admin/plugins/archcyril-sso', ['settings', 'alerts'], function (Settings
 		Settings.load('sso-archcyril', $('.sso-archcyril-settings'));
 		Settings.load('sso-google', $('.sso-google-settings'));
 		Settings.load('sso-github', $('.sso-github-settings'));
+		Settings.load('sso-linuxdo', $('.sso-linuxdo-settings'));
 
 		$('#save').on('click', function () {
 			var saved = 0;
-			var total = 3;
+			var total = 4;
 
 			function checkDone() {
 				saved += 1;
@@ -30,6 +31,7 @@ define('admin/plugins/archcyril-sso', ['settings', 'alerts'], function (Settings
 			Settings.save('sso-archcyril', $('.sso-archcyril-settings'), checkDone);
 			Settings.save('sso-google', $('.sso-google-settings'), checkDone);
 			Settings.save('sso-github', $('.sso-github-settings'), checkDone);
+			Settings.save('sso-linuxdo', $('.sso-linuxdo-settings'), checkDone);
 		});
 	};
 

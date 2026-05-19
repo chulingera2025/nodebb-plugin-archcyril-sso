@@ -27,6 +27,9 @@
 				<li class="nav-item">
 					<button class="nav-link {{{if isGithubActive}}}active{{{end}}}" data-bs-toggle="tab" data-bs-target="#github-tab">GitHub</button>
 				</li>
+					<li class="nav-item">
+						<button class="nav-link {{{if isLinuxdoActive}}}active{{{end}}}" data-bs-toggle="tab" data-bs-target="#linuxdo-tab">LinuxDO</button>
+					</li>
 			</ul>
 
 			<div class="tab-content">
@@ -92,6 +95,35 @@
 							<label class="form-label" for="github-callback">重定向 URL</label>
 							<input type="text" id="github-callback" class="form-control text-muted" value="{baseUrl}/auth/github/callback" readonly>
 							<div class="form-text">确保 GitHub OAuth App 中已配置此地址</div>
+						</div>
+					</form>
+				</div>
+
+				<!-- LinuxDO -->
+				<div class="tab-pane fade {{{if isLinuxdoActive}}}show active{{{end}}}" id="linuxdo-tab">
+					<div class="alert alert-info">
+						<strong>快速开始</strong>
+						<ol>
+							<li>前往 <a href="https://connect.linux.do">LinuxDO Connect <i class="fa fa-external-link"></i></a>，创建 <strong>OAuth 应用</strong></li>
+							<li>重定向 URL 填写: <code>{baseUrl}/auth/linuxdo/callback</code></li>
+							<li>获取 <strong>Client ID</strong> 和 <strong>Client Secret</strong>，填入下方或通过环境变量 <code>SSO_LINUXDO_CLIENT_ID</code>、<code>SSO_LINUXDO_CLIENT_SECRET</code> 配置</li>
+							<li>保存后重启 NodeBB</li>
+						</ol>
+					</div>
+
+					<form class="sso-linuxdo-settings">
+						<div class="mb-3">
+							<label class="form-label" for="linuxdo-id">客户端 ID</label>
+							<input type="text" name="id" id="linuxdo-id" class="form-control" placeholder="客户端 ID">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="linuxdo-secret">客户端密钥</label>
+							<input type="password" name="secret" id="linuxdo-secret" class="form-control" placeholder="客户端密钥">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="linuxdo-callback">重定向 URL</label>
+							<input type="text" id="linuxdo-callback" class="form-control text-muted" value="{baseUrl}/auth/linuxdo/callback" readonly>
+							<div class="form-text">确保 LinuxDO Connect 中已配置此地址</div>
 						</div>
 					</form>
 				</div>
